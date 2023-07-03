@@ -11,7 +11,11 @@ body{
 #info{
     font-size:36px;
 }
-
+.options{
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
 button{
     padding: 0;
     margin: 0;
@@ -22,9 +26,15 @@ button{
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-left: 12px;
+    gap:10%;
 }
 
+.wrapper div{
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .score div {
     display: flex;
     align-items: center;
