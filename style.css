@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    font-size: 48px;
+}
+
+#info{
+    font-size:36px;
+}
+
+button{
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 12px;
+}
+
+.score div {
+    display: flex;
+    align-items: center;
+}
