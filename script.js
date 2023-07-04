@@ -1,17 +1,17 @@
 var playerScore = 0;
 var aiScore = 0;
 
-var rock = document.getElementById("rock");
-var paper = document.getElementById("paper");
-var scissors = document.getElementById("scissors");
+var rock = document.getElementById("Rock");
+var paper = document.getElementById("Paper");
+var scissors = document.getElementById("Scissors");
 
 var info = document.getElementById("info");
 var playerScoreDiv = document.getElementById("player-score");
 var aiScoreDiv = document.getElementById("ai-score");
 
-rock.addEventListener("click", function(){ playRound("rock");});
-paper.addEventListener("click", function(){playRound("paper");});
-scissors.addEventListener("click", function(){playRound("scissors");});
+rock.addEventListener("click", function(){ playRound("Rock");});
+paper.addEventListener("click", function(){playRound("Paper");});
+scissors.addEventListener("click", function(){playRound("Scissors");});
 
 
 function playRound(playerChoice){
@@ -40,15 +40,15 @@ function generateChoice(){
     var randomNumber = Math.floor(Math.random() * 3) + 1;
 
     if(randomNumber == 1){
-        return "rock";
+        return "Rock";
     }
 
     if(randomNumber == 2){
-        return "paper";
+        return "Paper";
     }
 
     if(randomNumber == 3){
-        return "scissors";
+        return "Scissors";
     }
 }
 
@@ -56,34 +56,34 @@ function rps(playerChoice, aiChoice){
     if(playerChoice == aiChoice){
         return 0;
     }
-    if(playerChoice == "rock"){
-        if(aiChoice == "paper"){
+    if(playerChoice == "Rock"){
+        if(aiChoice == "Paper"){
             aiScore++;
             return 2;
         }
 
-        if(aiChoice =="scissors"){
+        if(aiChoice =="Scissors"){
             playerScore++;
             return 1;
         }
     }
-    if(playerChoice == "paper"){
-        if(aiChoice == "rock"){
+    if(playerChoice == "Paper"){
+        if(aiChoice == "Rock"){
             playerScore+=1;
             return 1;
         }
-        if(aiChoice == "scissors"){
+        if(aiChoice == "Scissors"){
             aiScore+=1;
             return 2;
         }
         
     }
-    if(playerChoice == "scissors"){
-        if(aiChoice == "rock"){
+    if(playerChoice == "Scissors"){
+        if(aiChoice == "Rock"){
             aiScore+=1;
             return 2;
         }
-        if(aiChoice == "paper"){
+        if(aiChoice == "Paper"){
             playerScore+=1;
             return 1;
         }
