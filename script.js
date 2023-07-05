@@ -1,3 +1,4 @@
+var currentRound = 1;
 var playerScore = 0;
 var aiScore = 0;
 
@@ -5,18 +6,48 @@ var rock = document.getElementById("Rock");
 var paper = document.getElementById("Paper");
 var scissors = document.getElementById("Scissors");
 
-var info = document.getElementById("info");
+var info = document.querySelector("#info .msg");
+var roundDiv = document.querySelector("#info .round");
 var playerScoreDiv = document.getElementById("player-score");
 var aiScoreDiv = document.getElementById("ai-score");
+var resetButton = document.querySelector("button");
 
 rock.addEventListener("click", function(){ playRound("Rock");});
 paper.addEventListener("click", function(){playRound("Paper");});
 scissors.addEventListener("click", function(){playRound("Scissors");});
+resetButton.addEventListener("click", function(){resetGame()})
+
 
 
 function playRound(playerChoice){
     var aiChoice = generateChoice();
     updateScore(playerChoice, aiChoice, rps(playerChoice, aiChoice));
+    updateRound(currentRound);
+}
+
+function updateRound(round){
+    roundDiv.textContent="Round " + round;
+    currentRound = round + 1;
+}
+
+function finishGame(winner){
+    resetText();
+    info.textContent(winner+" won!");
+}
+
+function resetGame(){
+    currentRound = 1;
+    playerScore = 0;
+    aiScore = 0;
+    resetText();
+}
+
+function resetText(){
+    roundDiv.textContent = '';
+    info.textContent = '';
+    currentRound.textContent ='';
+    playerScoreDiv.textContent = 0;
+    aiScoreDiv.textContent = 0;
 }
 
 function updateScore(playerChoice, aiChoice, winner){
@@ -30,10 +61,6 @@ function updateScore(playerChoice, aiChoice, winner){
     }
     playerScoreDiv.textContent = playerScore;
     aiScoreDiv.textContent = aiScore;
-}
-
-function updateInfo(winner){
-    info.textContent = message;
 }
 
 function generateChoice(){
