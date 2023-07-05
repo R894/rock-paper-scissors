@@ -12,10 +12,31 @@ var playerScoreDiv = document.getElementById("player-score");
 var aiScoreDiv = document.getElementById("ai-score");
 var resetButton = document.querySelector("button");
 
-rock.addEventListener("click", function(){ playRound("Rock");});
-paper.addEventListener("click", function(){playRound("Paper");});
-scissors.addEventListener("click", function(){playRound("Scissors");});
+const rockClickHandler = function() {
+    playRound("Rock");
+};
+const paperClickHandler = function() {
+    playRound("Rock");
+};
+const scissorsClickHandler = function() {
+    playRound("Rock");
+};
+
+togglePlayButtons(true);
 resetButton.addEventListener("click", function(){resetGame()})
+
+function togglePlayButtons(bool){
+    if(bool == true){
+        rock.addEventListener("click", rockClickHandler);
+        paper.addEventListener("click", paperClickHandler);
+        scissors.addEventListener("click", scissorsClickHandler);
+    }else {
+        rock.removeEventListener("click", rockClickHandler);
+        paper.removeEventListener("click", paperClickHandler);
+        scissors.removeEventListener("click", scissorsClickHandler);
+    }
+}
+
 
 
 
@@ -27,21 +48,41 @@ function playRound(playerChoice){
 
 function updateRound(round){
     roundDiv.textContent="Round " + round;
+    if(currentRound == 5){
+        finishGame();
+    }
     currentRound = round + 1;
 }
 
-function finishGame(winner){
-    resetText();
-    info.textContent(winner+" won!");
+function finishGame(){
+    var winner = ''
+    togglePlayButtons(false);
+    clearInfo();
+    if(playerScore > aiScore){
+        winner = 'Player';
+    } else if(playerScore == aiScore){
+        winner = 'Tie';
+    }else {
+        winner = 'AI';
+    }
+    if(winner != 'Tie'){
+        info.textContent = winner + " won!";
+    }else {
+        info.textContent = "It's a tie!";
+    }
+    
 }
 
 function resetGame(){
+    togglePlayButtons(true);
     currentRound = 1;
     playerScore = 0;
     aiScore = 0;
     resetText();
 }
-
+function clearInfo(){
+    info.textContent = '';
+}
 function resetText(){
     roundDiv.textContent = '';
     info.textContent = '';
