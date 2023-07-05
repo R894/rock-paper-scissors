@@ -16,10 +16,10 @@ const rockClickHandler = function() {
     playRound("Rock");
 };
 const paperClickHandler = function() {
-    playRound("Rock");
+    playRound("Paper");
 };
 const scissorsClickHandler = function() {
-    playRound("Rock");
+    playRound("Scissors");
 };
 
 togglePlayButtons(true);
